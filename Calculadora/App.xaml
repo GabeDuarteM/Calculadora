@@ -6,7 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/TextBoxStyle.xaml" />
+                <ResourceDictionary Source="Styles\TextBoxStyles.xaml" />
+                <ResourceDictionary Source="Styles\ButtonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

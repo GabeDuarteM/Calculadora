@@ -7,7 +7,7 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="RegraDeTres" Height="150" Width="350" Background="WhiteSmoke" FontFamily="Microsoft YaHei Light" WindowStartupLocation="CenterScreen">
+        Title="Regra de Três" Height="150" Width="350" Background="WhiteSmoke" FontFamily="Microsoft YaHei Light" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent" />

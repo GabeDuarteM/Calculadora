@@ -7,36 +7,11 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="Calculadora" Height="350" Width="250" WindowStartupLocation="CenterScreen" Background="WhiteSmoke" FontFamily="Microsoft YaHei Light">
-    <Window.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="FontSize" Value="17" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightGray" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#B8B8B8" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        Title="Calculadora" Height="350" Width="250" WindowStartupLocation="CenterScreen" Background="WhiteSmoke" FontFamily="Microsoft YaHei Light" MinHeight="350" MinWidth="250">
     <Grid>
         <DockPanel>
             <Label Content="{Binding sVisorHistorico}" HorizontalAlignment="Right" DockPanel.Dock="Top" IsEnabled="False" />
-            <TextBox Height="35" Text="{Binding sVisor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="22" TextAlignment="Right" BorderBrush="Transparent" DockPanel.Dock="Top" IsReadOnly="True" FocusVisualStyle="{x:Null}" />
+            <TextBox Height="35" Text="{Binding sVisor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="22" TextAlignment="Right" BorderBrush="Transparent" DockPanel.Dock="Top" IsReadOnly="True" Style="{StaticResource TextBoxSemBordaStyle}" />
 
             <Grid Background="#EAEAEA">
                 <Grid.RowDefinitions>
@@ -53,8 +28,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0">
-                    <Image Source="../Resources/ICONE_Seta.png" RenderTransformOrigin="0.5,0.5" Margin="10">
+                <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource ButtonStyle}">
+                    <Image Source="../Resources/ICONE_Seta.png" RenderTransformOrigin="0.5,0.5" Margin="10" Width="25" Height="25">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform />
@@ -65,28 +40,28 @@
                         </Image.RenderTransform>
                     </Image>
                 </Button>
-                <Button Grid.Row="0" Grid.Column="1" Content="CE" />
-                <Button Grid.Row="0" Grid.Column="2" Content="C" />
-                <Button Grid.Row="0" Grid.Column="3" Content="±" />
-                <Button Grid.Row="0" Grid.Column="4" Content="R3" Command="{Binding CommandRegraDeTres}" />
-                <Button Grid.Row="1" Grid.Column="0" Content="7" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="1" Grid.Column="1" Content="8" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="1" Grid.Column="2" Content="9" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="1" Grid.Column="3" Content="÷" />
-                <Button Grid.Row="1" Grid.Column="4" Content="√" />
-                <Button Grid.Row="2" Grid.Column="0" Content="4" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="2" Grid.Column="1" Content="5" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="2" Grid.Column="2" Content="6" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="2" Grid.Column="3" Content="×" />
-                <Button Grid.Row="2" Grid.Column="4" Content="%" />
-                <Button Grid.Row="3" Grid.Column="0" Content="1" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="3" Grid.Column="1" Content="2" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="3" Grid.Column="2" Content="3" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="3" Grid.Column="3" Content="−" />
-                <Button Grid.Row="3" Grid.Column="4" Content="=" Grid.RowSpan="2" />
-                <Button Grid.Row="4" Grid.Column="0" Content="0" Grid.ColumnSpan="2" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="4" Grid.Column="2" Content="{Binding sSeparadorDecimal}" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
-                <Button Grid.Row="4" Grid.Column="3" Content="+" />
+                <Button Grid.Row="0" Grid.Column="1" Content="CE" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="0" Grid.Column="2" Content="C" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="0" Grid.Column="3" Content="±" Command="{Binding CommandSinais}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="0" Grid.Column="4" Content="R3" Command="{Binding CommandRegraDeTres}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="0" Content="7" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="1" Content="8" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="2" Content="9" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="3" Content="÷" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="4" Content="√" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="0" Content="4" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="1" Content="5" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="2" Content="6" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="3" Content="×" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="4" Content="%" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="3" Grid.Column="0" Content="1" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="3" Grid.Column="1" Content="2" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="3" Grid.Column="2" Content="3" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="3" Grid.Column="3" Content="−" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="3" Grid.Column="4" Content="=" Grid.RowSpan="2" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="4" Grid.Column="0" Content="0" Grid.ColumnSpan="2" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="4" Grid.Column="2" Content="{Binding sSeparadorDecimal}" Command="{Binding CommandNumero}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Style="{StaticResource ButtonStyle}" />
+                <Button Grid.Row="4" Grid.Column="3" Content="+" Style="{StaticResource ButtonStyle}" />
             </Grid>
         </DockPanel>
     </Grid>

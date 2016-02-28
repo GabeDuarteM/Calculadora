@@ -35,12 +35,15 @@ namespace Calculadora.ViewModels
 
         public ICommand CommandRegraDeTres { get; set; }
 
+        public DelegateCommand<string> CommandSinais { get; private set; }
+
         public MainWindowViewModel()
         {
             sVisorHistorico = "";
             sVisor = "0";
             CommandNumero = new DelegateCommand<string>(AdicionarStringNoVisor);
             CommandRegraDeTres = new DelegateCommand(new Action(() => new RegraDeTres().Show()));
+            CommandSinais = new DelegateCommand<string>(RealizarOperacao);
         }
 
         private void AdicionarStringNoVisor(string sString)
@@ -50,6 +53,22 @@ namespace Calculadora.ViewModels
                 sVisor += sString;
 
                 sVisor = string.Format("{0:0}", sVisor);
+            }
+        }
+
+        private void RealizarOperacao(string sSinal)
+        {
+            switch (sSinal)
+            {
+                case "±":
+                    {
+                        decimal valor = decimal.Parse(sVisor);
+                        valor = valor * -1;
+                        sVisor = valor.ToString();
+                        break;
+                    }
+                default:
+                    break;
             }
         }
     }

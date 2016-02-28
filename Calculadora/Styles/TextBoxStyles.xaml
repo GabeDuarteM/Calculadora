@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Calculadora.Styles">
     <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyle">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="TextAlignment" Value="Center" />
@@ -61,16 +62,6 @@
                 <Setter Property="Background" Value="#ffe5e5" />
                 <Setter Property="BorderBrush" Value="Red" />
                 <Setter Property="Padding" Value="0,6,23,0" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    <Style TargetType="{x:Type CheckBox}" x:Key="CheckBoxStyle">
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-        <Style.Triggers>
-            <Trigger Property="Validation.HasError" Value="True">
-                <Setter Property="Background" Value="#ffe5e5" />
-                <Setter Property="BorderBrush" Value="Red" />
-                <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
             </Trigger>
         </Style.Triggers>
     </Style>
