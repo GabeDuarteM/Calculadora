@@ -27,7 +27,7 @@ namespace Calculadora.ViewModels
             {
                 ValidarPropriedade(propertyName, value);
             }
-
+            // comenta
             return retorno;
         }
 
